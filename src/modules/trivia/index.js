@@ -1,2 +1,2 @@
-import Trivia from './Trivia'
+import Trivia from './TriviaContainer'
 export default Trivia

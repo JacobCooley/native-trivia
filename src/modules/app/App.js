@@ -9,7 +9,6 @@ import {
 	StackNavigation,
 } from '@expo/ex-navigation'
 import { screenStyle } from '@common/styles'
-// import styles from './App.scss'
 
 const Router = createRouter(() => ({
 	home: () => HomeScreen,

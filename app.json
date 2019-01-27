@@ -24,10 +24,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.package.yay"
+      "bundleIdentifier": "com.g2i.trivia"
     },
     "android": {
-      "package": "com.package.yay"
+      "package": "com.g2i.trivia"
     },
     "packagerOpts": {
       "sourceExts": ["scss", "sass"],

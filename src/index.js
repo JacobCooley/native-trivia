@@ -10,12 +10,14 @@ import App from './modules/app'
 import rootReducer from './reducers'
 import { composeWithDevTools } from 'redux-devtools-extension'
 const middleware = composeWithDevTools(applyMiddleware(thunk))
-// const store = createStore(rootReducer, middleware)
+const store = createStore(rootReducer, middleware)
 
 class G2iTriviaApplication extends Component {
 	render() {
 		return (
+			<Provider store={store}>
 				<App />
+			</Provider>
 		)
 	}
 }

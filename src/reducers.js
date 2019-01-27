@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-// import appReducer from '@app/duck/reducers'
+import triviaReducer from '@modules/trivia/ducks'
 const rootReducer = combineReducers({
-	// global: appReducer,
+	 	trivia: triviaReducer,
 });
 
 export default rootReducer;

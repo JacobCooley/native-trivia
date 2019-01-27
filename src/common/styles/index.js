@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
 import dimen from '@utils/dimen'
 
 export const colors = {
@@ -20,16 +20,25 @@ export const sizes = {
 	medPadding: 20,
 	largePadding: 30,
 	xLargePadding: 40,
-	xxLargePadding: 50,
+	xxLargePadding: 60,
 }
 
 export const screenStyle = StyleSheet.create({
+	flex: {
+		flex: 1,
+		padding: sizes.largePadding,
+		paddingTop: Platform.OS === 'ios' ? sizes.xxLargePadding : sizes.largePadding,
+		backgroundColor: colors.darkBlue,
+		width: dimen.window.width,
+		height: dimen.window.height
+	},
 	flexCenter: {
 		flex: 1,
 		textAlign: 'center',
+		alignItems: 'center',
 		justifyContent: 'center',
-		alignSelf: 'center',
 		padding: sizes.largePadding,
+		paddingTop: Platform.OS === 'ios' ? sizes.xxLargePadding : sizes.largePadding,
 		backgroundColor: colors.darkBlue,
 		width: dimen.window.width,
 		height: dimen.window.height
@@ -38,10 +47,16 @@ export const screenStyle = StyleSheet.create({
 		flex: 1,
 		textAlign: 'center',
 		justifyContent: 'space-between',
+		alignItems: 'center',
 		alignSelf: 'center',
 		padding: sizes.largePadding,
+		paddingTop: Platform.OS === 'ios' ? sizes.xxLargePadding : sizes.largePadding,
 		backgroundColor: colors.darkBlue,
 		width: dimen.window.width,
 		height: dimen.window.height
+	},
+	div: {
+		textAlign: 'center',
+		fontSize: 26,
 	}
 })
