@@ -1,12 +1,12 @@
 import { StyleSheet, Text, Animated, PanResponder, View, } from 'react-native'
 import React, { Component } from 'react'
 import dimen from '@utils/dimen'
-import { colors, sizes } from '@common/styles'
+import { screenStyle, colors, sizes } from '@utils/styles'
 import { operations } from '../ducks'
 import HeaderComponent from '@common/components/HeaderComponent'
 import { MaterialIcons } from '@expo/vector-icons'
 import HTMLView from 'react-native-htmlview'
-import { screenStyle } from '@common/styles'
+import { addOrUpdate } from '../../../common/utils/functions'
 
 export default class Question extends Component {
 	constructor(props) {
@@ -69,8 +69,7 @@ export default class Question extends Component {
 	processAnswer(answer) {
 		const answeredItem = this.props.item
 		answeredItem['answer'] = answer
-		const answeredQuestions = [...this.props.answeredQuestions]
-		answeredQuestions.push(answeredItem)
+		const answeredQuestions = addOrUpdate(answeredItem,this.props.answeredQuestions)
 		this.props.dispatch(operations.answeredQuestions(answeredQuestions))
 	}
 	

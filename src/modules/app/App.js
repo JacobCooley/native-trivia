@@ -2,13 +2,12 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import HomeScreen from '@modules/home'
 import TriviaScreen from '@modules/trivia'
-import { colors, sizes } from '@common/styles'
+import { screenStyle, colors, sizes } from '@utils/styles'
 import {
 	createRouter,
 	NavigationProvider,
 	StackNavigation,
 } from '@expo/ex-navigation'
-import { screenStyle } from '@common/styles'
 
 const Router = createRouter(() => ({
 	home: () => HomeScreen,

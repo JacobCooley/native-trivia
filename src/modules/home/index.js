@@ -1,2 +1,2 @@
-import HomeComponent from './HomeContainer.js'
-export default HomeComponent
+import Home from './HomeContainer.js'
+export default Home

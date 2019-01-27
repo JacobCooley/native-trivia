@@ -18,7 +18,6 @@
           "@common": "./src/common",
           "@components": "./src/common/components",
           "@modules": "./src/modules",
-          "styles": "./src/common/styles",
           "@utils": "./src/common/utils"
         }
       }]
