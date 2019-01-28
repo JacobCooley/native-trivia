@@ -26,3 +26,4 @@ const HomeComponent = ({ error, dispatch, navigator }) => {
 }
 
 export default HomeComponent
+

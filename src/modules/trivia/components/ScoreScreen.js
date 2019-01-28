@@ -6,6 +6,7 @@ import HeaderComponent from '@common/components/HeaderComponent'
 import ButtonComponent from '@common/components/ButtonComponent'
 import HTMLView from 'react-native-htmlview'
 import { MaterialIcons } from '@expo/vector-icons'
+import TriviaComponent from '../TriviaComponent'
 
 export default class ScoreScreen extends React.Component {
 	
@@ -22,12 +23,12 @@ export default class ScoreScreen extends React.Component {
 	componentDidMount() {
 		let total = 0, correct = 0
 		this.props.answeredQuestions.forEach(item => {
-			if(item.answer === item.correct_answer){
+			if (item.answer === item.correct_answer) {
 				correct++
 			}
 			total++
 		})
-		this.setState({totalQuestions: total, correctQuestions: correct })
+		this.setState({ totalQuestions: total, correctQuestions: correct })
 	}
 	
 	//Reset App
@@ -37,15 +38,16 @@ export default class ScoreScreen extends React.Component {
 	
 	render() {
 		return (
-			<View style={{ flex: 1 }}>
-				<ScrollView contentContainerStyle={{ }}>
-					<HeaderComponent style={{marginBottom: sizes.largePadding}} text={`You Scored \n ${this.state.correctQuestions}/${this.state.totalQuestions}`} />
+			<View style={scoreStyle.score}>
+				<ScrollView contentContainerStyle={{}}>
+					<HeaderComponent style={{ marginBottom: sizes.largePadding }}
+													 text={`You Scored \n ${this.state.correctQuestions}/${this.state.totalQuestions}`} />
 					{
 						this.props.answeredQuestions.map((question) => {
 							const correct = question.answer === question.correct_answer
 							const answer = question.answer
 							return (
-								<View key={question.id} style={{ flex: 1, flexDirection: 'row', marginBottom: sizes.largePadding }}>
+								<View key={question.id} style={scoreStyle.question}>
 									<MaterialIcons
 										name={answer === 'True' ? 'check-circle' : 'cancel'} size={50}
 										color={correct ? colors.green : colors.red} />
@@ -65,6 +67,27 @@ export default class ScoreScreen extends React.Component {
 		)
 	}
 }
+
+TriviaComponent.propTypes = {
+	answeredQuestions: PropTypes.shape({
+		answer: PropTypes.string.isRequired,
+		correct_answer: PropTypes.string.isRequired,
+		id: PropTypes.number.isRequired
+	}),
+	navigator: PropTypes.func.isRequired
+}
+
+const scoreStyle = StyleSheet.create({
+	score: {
+		flex: 1
+	},
+	question: {
+		flex: 1,
+		flexDirection: 'row',
+		marginBottom:
+		sizes.largePadding
+	}
+})
 
 const greenDiv = StyleSheet.create({
 	div: {

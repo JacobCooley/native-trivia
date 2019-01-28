@@ -1,5 +1,6 @@
-import React, { forwardRef, useRef, useImperativeMethods } from 'react'
-import { Image, Text, View } from 'react-native'
+import React from 'react'
+import { StyleSheet, View } from 'react-native'
+import PropTypes from 'prop-types'
 import { screenStyle } from '@utils/styles'
 import Question from './components/Question'
 import ScoreScreen from './components/ScoreScreen'
@@ -7,7 +8,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 import { colors, sizes } from '@utils/styles'
 import { operations } from './ducks'
 import dimen from '@utils/dimen'
-import TextComponent from '../../common/components/TextComponent'
+import TextComponent from '@common/components/TextComponent'
 
 export default class TriviaComponent extends React.Component {
 	constructor(props) {
@@ -51,18 +52,11 @@ export default class TriviaComponent extends React.Component {
 	// Footer containing buttons that say true and false
 	footerForSwipeView(questionsArray, currentCardId) {
 		return (
-			<View style={{flex: 1, flexDirection: 'column', alignItems: 'center'}}>
-				<View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-end', flex: 1 }}>
-					<TextComponent style={{fontWeight: 'bold'}} text={`${questionsArray.length}/${this.state.totalLength}`} />
+			<View style={footerStyles.footer}>
+				<View style={footerStyles.numberOfQuestions}>
+					<TextComponent style={{ fontWeight: 'bold' }} text={`${questionsArray.length}/${this.state.totalLength}`} />
 				</View>
-				<View style={{
-					width: dimen.window.width,
-					alignItems: 'center',
-					justifyContent: 'space-between',
-					flexDirection: 'row',
-					paddingLeft: sizes.xLargePadding,
-					paddingRight: sizes.xLargePadding
-				}}>
+				<View style={footerStyles.buttons}>
 					<MaterialIcons
 						onPress={this.refs[currentCardId] ? () => this.refs[currentCardId].swipeFalse() : console.log('empty ref')}
 						name="cancel" size={70} color={colors.red} />
@@ -98,4 +92,32 @@ export default class TriviaComponent extends React.Component {
 			</View>
 		)
 	}
+}
+
+const footerStyles = StyleSheet.create({
+	footer: {
+		flex: 1, flexDirection: 'column', alignItems: 'center'
+	},
+	numberOfQuestions: {
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'flex-end',
+		flex: 1
+	},
+	buttons: {
+		width: dimen.window.width,
+		alignItems: 'center',
+		justifyContent: 'space-between',
+		flexDirection: 'row',
+		paddingLeft: sizes.xLargePadding,
+		paddingRight: sizes.xLargePadding
+	}
+})
+
+TriviaComponent.propTypes = {
+	trivia: PropTypes.shape({
+		questions: PropTypes.array.isRequired,
+		answeredQuestions: PropTypes.array
+	}),
+	dispatch: PropTypes.func.isRequired
 }

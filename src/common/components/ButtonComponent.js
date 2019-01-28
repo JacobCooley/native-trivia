@@ -17,6 +17,7 @@ const ButtonComponent = ({ style, text, onPress, textColor = colors.white,
 		alignSelf: 'center',
 		...style
 	}
+	
 	return (
 		<TouchableOpacity onPress={onPress}>
 			<View style={buttonStyle}>
