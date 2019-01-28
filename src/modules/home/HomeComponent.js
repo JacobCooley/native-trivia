@@ -19,7 +19,7 @@ const HomeComponent = ({ error, dispatch, navigator }) => {
 			<TextComponent text='Can you score 100%?' />
 			{error ? <TextComponent style={{ color: colors.red }} text='Error Getting Questions, Try Later' /> : <></>}
 			<ButtonComponent
-				onPress={() => pressBegin()}
+				onPress={pressBegin}
 				text="Begin" />
 		</View>
 	)

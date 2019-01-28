@@ -13,7 +13,8 @@ export default class ScoreScreen extends React.Component {
 		super(props)
 		this.state = {
 			totalQuestions: 0,
-			correctQuestions: 0
+			correctQuestions: 0,
+			navigator: null
 		}
 	}
 	
@@ -26,11 +27,11 @@ export default class ScoreScreen extends React.Component {
 			}
 			total++
 		})
-		this.setState({totalQuestions: total, correctQuestions: correct})
+		this.setState({totalQuestions: total, correctQuestions: correct })
 	}
 	
 	//Reset App
-	pressPlayAgain() {
+	pressPlayAgain = () => {
 		this.props.navigator.replace('home')
 	}
 	
@@ -56,7 +57,7 @@ export default class ScoreScreen extends React.Component {
 					}
 					<ButtonComponent
 						style={{ marginTop: sizes.medPadding }}
-						onPress={() => this.pressPlayAgain()}
+						onPress={this.pressPlayAgain}
 						text="Play Again?" />
 				</ScrollView>
 			</View>

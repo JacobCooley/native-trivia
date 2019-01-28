@@ -4,6 +4,7 @@ import { Types } from './actions'
 export const INITIAL_STATE = {
 	questions: [],
 	answeredQuestions: [],
+	loading: false,
 	error: null
 }
 
@@ -11,7 +12,16 @@ export const get_questions_error = (state = INITIAL_STATE, action) => {
 	const { error } = action
 	return {
 		...state,
-		error
+		error,
+		loading: false
+	}
+}
+
+export const set_loading = (state = INITIAL_STATE, action) => {
+	const { loading } = action
+	return {
+		...state,
+		loading
 	}
 }
 
@@ -28,6 +38,7 @@ export const get_questions = (state = INITIAL_STATE, action) => {
 	return {
 		...state,
 		error: null,
+		loading: false,
 		answeredQuestions: [],
 		questions
 	}
@@ -47,6 +58,7 @@ export const HANDLERS = {
 	[Types.GET_QUESTIONS]: get_questions,
 	[Types.GET_QUESTIONS_ERROR]: get_questions_error,
 	[Types.UPDATE_QUESTIONS]: update_questions,
+	[Types.SET_LOADING]: set_loading,
 	[Types.ANSWERED_QUESTIONS]: answered_questions
 }
 

@@ -28,7 +28,7 @@ export default class TriviaComponent extends React.Component {
 	}
 	
 	//Removes card from the array
-	removeCard = async id => {
+	removeCard = async (id) => {
 		const newQuestions = this.props.trivia.questions
 		newQuestions.splice(
 			this.props.trivia.questions.findIndex(x => x.id === id),
@@ -79,7 +79,7 @@ export default class TriviaComponent extends React.Component {
 		const answeredQuestions = this.props.trivia.answeredQuestions
 		const currentCardId = this.props.trivia.questions.length > 0 ? this.props.trivia.questions[this.props.trivia.questions.length - 1].id : 0
 		return (
-			<View style={screenStyle.flex}>
+			<View style={screenStyle.flex} onClick={this.removeCard}>
 				{questionsArray.map((item, key) => (
 					<Question
 						key={key}
@@ -87,7 +87,7 @@ export default class TriviaComponent extends React.Component {
 						answeredQuestions={answeredQuestions}
 						ref={item.id}
 						dispatch={this.props.dispatch}
-						removeCard={() => this.removeCard(item.id)}
+						removeCard={this.removeCard}
 					/>
 				))}
 				{this.state.arrayEmpty ? (

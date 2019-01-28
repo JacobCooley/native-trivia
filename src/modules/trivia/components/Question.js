@@ -92,7 +92,7 @@ export default class Question extends Component {
 				{ useNativeDriver: true }
 			).start(() => {
 				this.setState({ swipeFalse: false, swipeTrue: false }, () => {
-					this.props.removeCard()
+					this.props.removeCard(this.props.item.id)
 				})
 			})
 		})
@@ -117,7 +117,7 @@ export default class Question extends Component {
 				{ useNativeDriver: true }
 			).start(() => {
 				this.setState({ swipeFalse: false, swipeTrue: false }, () => {
-					this.props.removeCard()
+					this.props.removeCard(this.props.item.id)
 				})
 			})
 		})
